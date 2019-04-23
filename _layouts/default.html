@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href={{"assets/styles.css" | relative_url}}>
   <title>{{ page.title }}</title>
 </head>
 <body>
-  <div>
+  <div class="header">
     <h1>Webgl 2</h1>
   </div>
-  <div>
+  <hr>
+  <div class="navigation">
     <nav>
       <a href={{ "/docs/vectors/" | relative_url }}>Vectors</a>
       <a href={{ "/docs/matrices/" | relative_url }}>Martrices</a>
-      <a href="./clock/">Clock</a>
+      <a href={{ "/docs/clock/" | relative_url }}>Clock</a>
     </nav>
   </div>
-  <div>
+  <div class="content">
     {{  content }}
   </div>
 </body>

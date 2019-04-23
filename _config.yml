@@ -22,6 +22,7 @@ url: "https://gdmgent-1819-csse2.github.io" # the base hostname & protocol for y
 github_username:  jarnvans
 
 # Build settings
+highlighter: rouge
 markdown: kramdown
 theme: minima
 plugins:

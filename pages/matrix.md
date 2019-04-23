@@ -13,24 +13,29 @@ To create a new matrix you have to do the following
 first:
 
 ```js
+
   import Matrix2 from '../../../Library/Math/Matrix2.js'
+
 ```
 
 then:
 
 ```js
+
   const matrixArray = [
     1, 6,
     3, 8,
   ]
 
   const matrix = new Matrix2(matrixArray)
+
 ```
 
 
 When we create a matrix, the code below is executed
 
 ```js
+
   constructor(items){
     this.items = items || [
       0, 0,
@@ -46,7 +51,9 @@ Once you created a matrix you can start using functions.
 Here's how to call a function
 
 ```js
+
   matrix.add(secondMatrix)
+
 ```
 
 **add(m2)**
@@ -54,6 +61,7 @@ Here's how to call a function
 When you call the **add()** function you can add 2 matrices together.
 
 ```js
+
   add(secondMatrix)
   {
     const originalMatrix = this.items
@@ -62,6 +70,7 @@ When you call the **add()** function you can add 2 matrices together.
       originalMatrix[2] + secondMatrix[2], originalMatrix[3] + secondMatrix[3]
     ]
   }
+
 ```
 
 **sub(m2)**
@@ -69,6 +78,7 @@ When you call the **add()** function you can add 2 matrices together.
 The **sub()** function subtracts 2 matrices.
 
 ```js
+
   sub(secondMatrix)
   {
     const originalMatrix = this.items
@@ -77,6 +87,7 @@ The **sub()** function subtracts 2 matrices.
       originalMatrix[2] - secondMatrix[2], originalMatrix[3] - secondMatrix[3]
     ]
   }
+
 ```
 
 **mul(m2)**
@@ -84,6 +95,7 @@ The **sub()** function subtracts 2 matrices.
 When we call this function we get the product of 2 matrices.
 
 ```js
+
   mul(secondMatrix)
   {
     const originalMatrix = this.items
@@ -95,6 +107,7 @@ When we call this function we get the product of 2 matrices.
 
     this.items = productMatrix
   }
+
 ```
 
 **rot(α)**
@@ -102,6 +115,7 @@ When we call this function we get the product of 2 matrices.
 This function rotates the matrix.
 
 ```js
+
   rot(α) {
     α *= Math.PI / 180
     const cos = Math.cos(α)
@@ -114,6 +128,7 @@ This function rotates the matrix.
     this.items = rotationMatrix
     this.mul(originalMatrix);
   }
+  
 ```
 
 
