@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Documentation
-permalink: /vectors/
+title: Vectors
+permalink: ./docs/vectors/
 ---
 
 ## Vectors
