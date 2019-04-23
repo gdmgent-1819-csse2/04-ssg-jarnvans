@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Documentation - Matrices
-permalink: /docs/matrices/
+permalink: ./docs/matrices/
 ---
 
 ## Matrices
