@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Vectors
+title: Documentation - Vectors
 permalink: /docs/vectors/
 ---
 
