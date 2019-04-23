@@ -1,123 +1,126 @@
 ---
 layout: default
-title: Documentation - Vectors
+title: Documentation - Clock
 permalink: ./docs/clock/
 ---
 
-## Vectors
+## Clock
 
-### Creating a vector
-
-To create a new vector you have to do the following
-
-first:
+Here we will create a very simple analog clock using vectors, here's what we will get.
 
 ```js
-  import Vector2 from '../../../Library/Math/Vector2.js'
-```
 
-then:
+  updateCanvasHandler(event) {
+    console.log('updateCanvas')
+    this.clearData()
 
-```js
-  const newVector = new Vector2(3, 6)
-```
+    // White point in the middle
+    this.data.positions.push(0, 0)
+    this.data.colors.push(...this.colors.white)
 
+    const v = new Vector2(0.6, 0)
+    this.data.positions.push(v.x, v.y)
+    this.data.colors.push(...this.colors.white)
 
-When we create a vector, the code below is executed
+    for(let i = 0; i < 12; i++){
+        v.rot(30);
+        this.data.positions.push(v.x, v.y)
+        this.data.colors.push(...this.colors.white)
+    } 
 
-```js
-  constructor(x, y) 
-  {
-    this.x = Number(x) || 0
-    this.y = Number(y) || 0
+    const date = new Date()
+
+    let seconds = date.getSeconds()
+    let minutes = date.getMinutes()
+    let hours = date.getHours()
+
+    let secondsVector = new Vector2(0, 0.5)
+    secondsVector.rot(seconds * -6)
+    this.data.positions.push(secondsVector.x, secondsVector.y)
+    this.data.colors.push(...this.colors.red)
+    let minutesVector = new Vector2(0, 0.6)
+    minutesVector.rot(minutes * -6)
+    this.data.positions.push(minutesVector.x, minutesVector.y)
+    this.data.colors.push(...this.colors.yellow)
+    let hoursVector = new Vector2(0, 0.4)
+    hoursVector.rot(hours * -6)
+    this.data.positions.push(hoursVector.x, hoursVector.y)
+    this.data.colors.push(...this.colors.green)
+
+    this.drawScene()
   }
 
 ```
 
-### Vector operations
-Once you created a vector you can start using functions.
+### Creating the clock
 
-Here's how to call a function
-
-```js
-  newVector.add(secondVector)
-  newVector.scalar(2)
-```
-
-**add(v2)**
-
-When you call the **add()** function you can add 2 vectors together.
+Simple. Just clear all the data with this function
 
 ```js
-  add(secondVector) 
-  {
-    this.x += secondVector.x
-    this.y += secondVector.y
-  }
+
+  this.clearData()
+
 ```
 
-**sub(v2)**
-
-The **sub()** function subtracts 2 vectors.
+Now we'll create our white point in the middle
 
 ```js
-  sub(secondVector) 
-  {
-    this.x -= secondVector.x
-    this.y -= secondVector.y
-  }
+
+  this.data.positions.push(0, 0)
+  this.data.colors.push(...this.colors.white)
+
 ```
 
-**scalar(a)**
-
-This function multiplies a vector by a scalar.
+Now we'll create a new vector for the 12 points that represent the hours. We are going to rotate this vector so we get 12 points.
 
 ```js
-  scalar(scalarNumber) 
-  {
-    this.x *= scalarNumber
-    this.y *= scalarNumber
-  }
+
+  const v = new Vector2(0.6, 0)
+  this.data.positions.push(v.x, v.y)
+  this.data.colors.push(...this.colors.white)
+
+  for(let i = 0; i < 12; i++){
+      v.rot(30);
+      this.data.positions.push(v.x, v.y)
+      this.data.colors.push(...this.colors.white)
+  } 
+
 ```
 
-**dot(v2)**
+### Setting the time
 
-When we call this function we get the product of 2 vectors.
+Here we will see how to get the current time and how to convert it to vectors.
 
 ```js
-  dot(secondVector) {
-    return this.x * secondVector.x + this.y * secondVector.y
-  }
+  
+  const date = new Date()
+
+  let seconds = date.getSeconds()
+  let minutes = date.getMinutes()
+  let hours = date.getHours()
+
+  let secondsVector = new Vector2(0, 0.5)
+  secondsVector.rot(seconds * -6)
+  this.data.positions.push(secondsVector.x, secondsVector.y)
+  this.data.colors.push(...this.colors.red)
+  let minutesVector = new Vector2(0, 0.6)
+  minutesVector.rot(minutes * -6)
+  this.data.positions.push(minutesVector.x, minutesVector.y)
+  this.data.colors.push(...this.colors.yellow)
+  let hoursVector = new Vector2(0, 0.4)
+  hoursVector.rot(hours * -6)
+  this.data.positions.push(hoursVector.x, hoursVector.y)
+  this.data.colors.push(...this.colors.green)
+
 ```
 
-**norm()**
+### Draw the time
 
-This function gives us the length of the vector.
+The only thing left to do is draw our clock on the screen.
 
 ```js
-  norm() 
-  {
-    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-  }
+  
+  this.drawScene()
+
 ```
-
-**rot(α)**
-
-This function rotates the vector.
-
-```js
-  rot(α) {
-    const matrix = new Matrix2([
-      this.x, 0, 
-      this.y, 0
-    ])
-    matrix.rot(α)
-    console.log(matrix)
-    this.x = matrix.items[0]
-    this.y = matrix.items[2]
-  }
-```
-
-
-
 
