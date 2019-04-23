@@ -103,7 +103,7 @@ This function gives us the length of the vector.
 
 **rot(α)**
 
-this function rotates the vector.
+This function rotates the vector.
 
 ```js
   rot(α) {
